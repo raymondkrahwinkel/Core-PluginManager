@@ -1,9 +1,14 @@
+using CorePluginManager;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.BuildPluginManager();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.UsePluginManager();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
