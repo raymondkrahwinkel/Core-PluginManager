@@ -1,6 +1,5 @@
 ﻿using CorePluginManager.Helpers;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CorePluginManager;
@@ -27,12 +26,15 @@ public static class PluginManager
         }
         catch (Exception ex)
         {
-            // todo: handle error
+            Console.Error.WriteLine($"Exception during setup PluginManager: {ex.StackTrace}");
         }
 
         #region Helpers
         builder.Services.AddTransient<ISessionHelper, SessionHelper>();
         #endregion
+        
+        // start loading plugins
+        // todo: add code
         
         return builder;
     }
@@ -40,6 +42,9 @@ public static class PluginManager
     public static IApplicationBuilder UsePluginManager(this IApplicationBuilder app)
     {
         app.UseSession();
+        
+        // start loading plugins
+        // todo: add code
         
         return app;
     }
