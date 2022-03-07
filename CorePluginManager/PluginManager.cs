@@ -1,4 +1,6 @@
 ﻿using CorePluginManager.Helpers;
+using CorePluginManager.Interfaces;
+using CorePluginManager.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -34,7 +36,22 @@ public static class PluginManager
         #endregion
         
         // start loading plugins
-        // todo: add code
+        var assemblies = Assemblies.AssemblyTypesByInterface(typeof(IPluginServiceCollection));
+        if (assemblies.Any())
+        {
+            foreach(var assembly in assemblies)
+            {
+                var instance = (IPluginServiceCollection)Activator.CreateInstance(assembly)!;
+                try
+                {
+                    instance?.AddPluginManager(builder.Services);
+                }
+                catch (Exception ex)
+                {
+                    // todo: handle exception
+                }
+            }
+        }
         
         return builder;
     }
@@ -44,7 +61,22 @@ public static class PluginManager
         app.UseSession();
         
         // start loading plugins
-        // todo: add code
+        var assemblies = Assemblies.AssemblyTypesByInterface(typeof(IPluginApplicationBuilder));
+        if (assemblies.Any())
+        {
+            foreach(var assembly in assemblies)
+            {
+                var instance = (IPluginApplicationBuilder)ActivatorUtilities.CreateInstance(app.ApplicationServices, assembly);
+                try
+                {
+                    instance?.AppBuilder(app);
+                }
+                catch (Exception ex)
+                {
+                    // todo: handle exception
+                }
+            }
+        }
         
         return app;
     }

@@ -2,7 +2,7 @@
 
 namespace CorePluginManager.Interfaces;
 
-public interface IPluginServiceCollection
+public interface IPluginServiceCollection : IPlugin
 {
     IServiceCollection AddPluginManager(IServiceCollection services);
 }

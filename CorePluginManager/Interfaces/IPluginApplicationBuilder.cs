@@ -2,7 +2,7 @@
 
 namespace CorePluginManager.Interfaces;
 
-public interface IPluginApplicationBuilder
+public interface IPluginApplicationBuilder : IPlugin
 {
     IApplicationBuilder AppBuilder(IApplicationBuilder app);
 }
