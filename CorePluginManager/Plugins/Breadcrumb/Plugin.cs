@@ -4,19 +4,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CorePluginManager.Plugins.Breadcrumb;
 
-public class Plugin : IPluginServiceCollection, IPluginApplicationBuilder
+public class Plugin : IPluginServiceCollection
 {
     public Version Version => new(0, 0, 1);
-    public IApplicationBuilder AppBuilder(IApplicationBuilder app)
-    {
-        
-        
-        return app;
-    }
 
     public IServiceCollection AddPluginManager(IServiceCollection services)
     {
-        
+        services.AddTransient<IBreadcrumbService, BreadcrumbService>();
         
         return services;
     }

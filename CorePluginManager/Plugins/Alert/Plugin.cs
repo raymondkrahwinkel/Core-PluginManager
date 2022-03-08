@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CorePluginManager.Plugins.Alert;
 
-public class Plugin : IPlugin, IPluginServiceCollection
+public class Plugin : IPluginServiceCollection
 {
     public Version Version => new(0, 0, 1);
     
