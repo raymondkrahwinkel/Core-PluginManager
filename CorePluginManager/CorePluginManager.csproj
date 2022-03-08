@@ -8,8 +8,9 @@
         <PackageVersion>0.0.1</PackageVersion>
         <Authors>Raymond Krahwinkel</Authors>
         <PackageProjectUrl>https://github.com/raymondkrahwinkel/Core-PluginManager</PackageProjectUrl>
+        <PackageId>CorePluginManager</PackageId>
+        <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/raymondkrahwinkel/Core-PluginManager</RepositoryUrl>
-        <RepositoryType>Github</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
