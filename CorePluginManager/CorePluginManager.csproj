@@ -4,6 +4,12 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageVersion>0.0.1</PackageVersion>
+        <Authors>Raymond Krahwinkel</Authors>
+        <PackageProjectUrl>https://github.com/raymondkrahwinkel/Core-PluginManager</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/raymondkrahwinkel/Core-PluginManager</RepositoryUrl>
+        <RepositoryType>Github</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
