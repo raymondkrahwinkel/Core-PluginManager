@@ -1,0 +1,6 @@
+﻿@using CorePluginManager.Plugins.Breadcrumb
+@inject IBreadcrumbService _breadcrumbService
+@{
+    ViewData["Title"] = "Test Page";
+    _breadcrumbService.Test();
+}
