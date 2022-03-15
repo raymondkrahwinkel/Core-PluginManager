@@ -12,6 +12,7 @@ public class Plugin : IPluginServiceCollection, IPluginApplicationBuilder
     public IApplicationBuilder AppBuilder(IApplicationBuilder app)
     {
         // find default breadcrumb item attribute
+        BreadcrumbService.Initialize(PluginManager.Parent);
         
         return app;
     }

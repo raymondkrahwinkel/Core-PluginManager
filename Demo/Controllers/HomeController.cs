@@ -6,7 +6,6 @@ using Demo.Models;
 
 namespace Demo.Controllers;
 
-[DefaultBreadcrumb("Home")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
@@ -18,7 +17,8 @@ public class HomeController : Controller
         _alertService = alertService;
     }
 
-    [Breadcrumb("Homepage")]
+    //[Breadcrumb("Homepage")]
+    [DefaultBreadcrumb("Home")]
     public IActionResult Index()
     {
         _alertService.Error("Test!");

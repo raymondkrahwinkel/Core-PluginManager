@@ -3,7 +3,7 @@ using CorePluginManager;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.BuildPluginManager();
+builder.BuildPluginManager(typeof(Program).Assembly);
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

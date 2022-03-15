@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Demo.Controllers;
 
 [Breadcrumb("Test class")]
+[Area("AreaName")]
 public class TestController : Controller
 {
     [Breadcrumb("Test page")]

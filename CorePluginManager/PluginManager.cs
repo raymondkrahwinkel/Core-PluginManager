@@ -1,4 +1,5 @@
-﻿using CorePluginManager.Helpers;
+﻿using System.Reflection;
+using CorePluginManager.Helpers;
 using CorePluginManager.Interfaces;
 using CorePluginManager.Utils;
 using Microsoft.AspNetCore.Builder;
@@ -8,8 +9,14 @@ namespace CorePluginManager;
 
 public static class PluginManager
 {
-    public static WebApplicationBuilder BuildPluginManager(this WebApplicationBuilder builder)
+    private static Assembly _parentAssembly = null!;
+    public static Assembly Parent => _parentAssembly;
+    
+    public static WebApplicationBuilder BuildPluginManager(this WebApplicationBuilder builder, Assembly parentAssembly)
     {
+        // store the parent assembly
+        _parentAssembly = parentAssembly;
+        
         // load configuration
         builder.Services.Configure<PluginManagerConfiguration>(builder.Configuration.GetSection("PluginManager"));
         var configuration = PluginManagerConfiguration.Load(builder.Configuration);

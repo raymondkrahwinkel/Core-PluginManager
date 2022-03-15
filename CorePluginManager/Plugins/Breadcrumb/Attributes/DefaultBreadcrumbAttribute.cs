@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using CorePluginManager.Plugins.Breadcrumb.Models;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace CorePluginManager.Plugins.Breadcrumb.Attributes;
 
@@ -6,6 +7,8 @@ namespace CorePluginManager.Plugins.Breadcrumb.Attributes;
 public class DefaultBreadcrumbAttribute : BreadcrumbAttribute
 {
     public override bool IsDefault => true;
+
+    public BreadcrumbItem Item => base.ToItem();
     
     public DefaultBreadcrumbAttribute() : base() { }
 

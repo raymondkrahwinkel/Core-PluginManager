@@ -55,6 +55,13 @@ public class BreadcrumbAttribute : ActionFilterAttribute
     {
         var controller = context.Controller as Controller;
         
+        // get area information
+        var areaAttribute = controller?.GetType().GetCustomAttribute<AreaAttribute>();
+        if (areaAttribute != null)
+        {
+            Area = areaAttribute.RouteValue;
+        }
+        
         // when no controller is given, lookup
         // if (string.IsNullOrEmpty(Controller) && context.HttpContext.Request.RouteValues.TryGetValue("controller", out var controllerName))
         if (string.IsNullOrEmpty(Controller) && controller != null &&!string.IsNullOrEmpty(controller?.ControllerContext.ActionDescriptor.ControllerName))
@@ -79,7 +86,7 @@ public class BreadcrumbAttribute : ActionFilterAttribute
         base.OnActionExecuted(context);
     }
 
-    private BreadcrumbItem ToItem()
+    protected BreadcrumbItem ToItem()
     {
         return new()
         {
@@ -87,7 +94,8 @@ public class BreadcrumbAttribute : ActionFilterAttribute
             Action = Action,
             Area = Area,
             Controller = Controller,
-            Parameters = Parameters
+            Parameters = Parameters,
+            IsDefault = IsDefault
         };
     }
     
