@@ -1,9 +1,17 @@
+using CorePluginManager;
+using CorePluginManager.Plugins.Breadcrumb.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder
+    .BuildPluginManager(typeof(Program).Assembly)
+    .SetPluginManagerOptions(new BreadcrumbOptions() { ActiveCssClass = "active" });
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.UsePluginManager();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
