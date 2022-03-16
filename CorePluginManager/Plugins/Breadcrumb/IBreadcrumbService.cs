@@ -16,5 +16,5 @@ public interface IBreadcrumbService
     /// <param name="item"></param>
     void Add(BreadcrumbItem item);
 
-    void Test();
+    // todo: add overwrite function to inject own List<BreadcrumbItem>
 }

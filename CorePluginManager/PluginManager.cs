@@ -11,6 +11,7 @@ public static class PluginManager
 {
     private static Assembly _parentAssembly = null!;
     public static Assembly Parent => _parentAssembly;
+    private static readonly Dictionary<Type, object> _optionsStack = new();
     
     public static WebApplicationBuilder BuildPluginManager(this WebApplicationBuilder builder, Assembly parentAssembly)
     {
@@ -61,6 +62,45 @@ public static class PluginManager
         }
         
         return builder;
+    }
+
+    public static WebApplicationBuilder SetPluginManagerOptions(this WebApplicationBuilder builder, object option)
+    {
+        var optionType = option.GetType();
+
+        if (_optionsStack.ContainsKey(optionType))
+        {
+            _optionsStack[optionType] = option;
+        }
+        else
+        {
+            _optionsStack.TryAdd(optionType, option);
+        }
+        
+        return builder;
+    }
+
+    /// <summary>
+    /// get option instance from the options stack
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="defaultValue"></param>
+    /// <returns>set defaultValue when not found</returns>
+    public static T GetPluginManagerOptions<T>(T defaultValue = default)
+    {
+        if (_optionsStack.TryGetValue(typeof(T), out object value))
+        {
+            try
+            {
+                return (T)value;
+            }
+            catch(Exception ex)
+            {
+                throw new PluginException("", ex);
+            }
+        }
+        
+        return defaultValue;
     }
     
     public static IApplicationBuilder UsePluginManager(this IApplicationBuilder app)

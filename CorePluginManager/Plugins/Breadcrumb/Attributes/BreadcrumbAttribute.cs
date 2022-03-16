@@ -46,8 +46,13 @@ public class BreadcrumbAttribute : ActionFilterAttribute
         
     }
     
-    public BreadcrumbAttribute(string title, [CallerMemberName] string memberName = "", [CallerFilePath] string filePath = "")
+    public BreadcrumbAttribute(string title, [CallerMemberName] string memberName = "")
     {
+        if (string.IsNullOrEmpty(memberName))
+        {
+            Action = PluginManager.GetPluginManagerOptions<BreadcrumbOptions>(new())?.DefaultAction;
+        }
+        
         Title = title;
     }
 

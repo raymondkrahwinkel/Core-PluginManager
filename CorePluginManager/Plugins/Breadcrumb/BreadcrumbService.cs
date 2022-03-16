@@ -14,7 +14,8 @@ public class BreadcrumbService : IBreadcrumbService
 
     public BreadcrumbService()
     {
-        
+        if(DefaultItem != null)
+            _items.Add(DefaultItem);
     }
 
     #region Initialization
@@ -29,7 +30,6 @@ public class BreadcrumbService : IBreadcrumbService
         {
             if (TryGetDefaultBreadcrumbItemFromController(type, out var item))
             {
-                var i = item;
                 DefaultItem = item;
             }
         }
@@ -94,8 +94,15 @@ public class BreadcrumbService : IBreadcrumbService
         }
         
         // add controller information
-        // todo: sanitize name (remove Controller when present at the end)
         defaultBreadcrumbAttribute.Controller = type.Name;
+
+        // sanitize controller name
+        if (defaultBreadcrumbAttribute.Controller != "Controller" &&
+            defaultBreadcrumbAttribute.Controller.EndsWith("Controller"))
+        {
+            defaultBreadcrumbAttribute.Controller =
+                defaultBreadcrumbAttribute.Controller.Substring(0, defaultBreadcrumbAttribute.Controller.Length - 10);
+        }
     }
     #endregion
 
@@ -106,11 +113,6 @@ public class BreadcrumbService : IBreadcrumbService
             throw new PluginException("Breadcrumb", "there can only be 1 default breadcrumb item");
         }
         
-        _items.Add(item);
-    }
-
-    public void Test()
-    {
-        var test = _items;
+        _items.Insert(1, item);
     }
 }
