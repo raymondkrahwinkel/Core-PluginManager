@@ -4,6 +4,7 @@ using CorePluginManager.Interfaces;
 using CorePluginManager.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace CorePluginManager;
 
@@ -56,7 +57,7 @@ public static class PluginManager
                 }
                 catch (Exception ex)
                 {
-                    // todo: handle exception
+                    Console.Error.WriteLine($"Exception during BuildPluginManager: {ex.Message}{Console.Error.NewLine}{ex.StackTrace}");
                 }
             }
         }
@@ -120,7 +121,7 @@ public static class PluginManager
                 }
                 catch (Exception ex)
                 {
-                    // todo: handle exception
+                    Console.Error.WriteLine($"Exception during UsePluginManager: {ex.Message}{Console.Error.NewLine}{ex.StackTrace}");
                 }
             }
         }

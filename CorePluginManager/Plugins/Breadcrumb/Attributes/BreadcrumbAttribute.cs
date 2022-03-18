@@ -80,10 +80,6 @@ public class BreadcrumbAttribute : ActionFilterAttribute
         {
             Action = controller.ControllerContext.ActionDescriptor.ActionName;
         }
-        else if (string.IsNullOrEmpty(Action))
-        {
-            // todo: get default action from options (configuration)
-        }
         
         var breadcrumbService = context.HttpContext.RequestServices.GetRequiredService<IBreadcrumbService>();
         breadcrumbService.Add(ToItem());
