@@ -78,8 +78,23 @@ The session helper can create groups within the session, this can be used to bet
 ## Plugins:
 ### Alerts
 With this you can add error, info, success and warning messages via the service layer and render them after a page refresh.
-#### Configuration
 
+#### Configuration
+Configuration can be done during startup with `SetPluginManagerOptions`
+#### AlertOptions
+Options | Default Value                 | Description
+------- |-------------------------------| -----------
+`DismissibleCssClass` | "alert-dismissible fade show" | Css class string to use for dismissible alerts
+`ErrorMessages` | CssClass = "alert-danger"     | See below AlertOptions.MessageOptions
+`WarningMessages` | CssClass = "alert-warning"    | See below AlertOptions.MessageOptions
+`SuccessMessages` | CssClass = "alert-success"    | See below AlertOptions.MessageOptions
+`InfoMessages` | CssClass = "alert-info"          | See below AlertOptions.MessageOptions
+
+#### AlertOptions.MessageOptions
+Options | Default Value                 | Description
+------- |-------------------------------| -----------
+`CssClass` | "" | Css class for the alert box
+`Dismissible` | true | Enable close button on message
 
 #### Usage
 At the point where you want to render the alerts add `<alert></alert>` this will generate a default bootstrap 5 alert.
@@ -101,7 +116,7 @@ Method  | Description
 
 #### Configuration
 Configuration can be done during startup with `SetPluginManagerOptions`
-#### Available options
+#### BreadcrumbOptions
 Options | Default Value  | Description
 ------- |----------------| -----------
 `DefaultAction` | "Index"        | Action to use when non is set in BreadcrumbItem
