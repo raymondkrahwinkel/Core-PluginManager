@@ -41,7 +41,7 @@ public class BreadcrumbTagHelper : TagHelper
             }
             else
             {
-                var parameters = item.Parameters?.ToDictionary() ?? new Dictionary<string, object>();
+                var parameters = item.Parameters?.ToDictionary() ?? new Dictionary<string, object?>();
                 if (!string.IsNullOrEmpty(item.Area))
                 {
                     parameters.Add("Area", item.Area);
