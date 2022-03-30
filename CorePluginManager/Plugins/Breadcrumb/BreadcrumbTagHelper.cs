@@ -30,7 +30,8 @@ public class BreadcrumbTagHelper : TagHelper
         var urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
         var child = await output.GetChildContentAsync();
 
-        output.Content.AppendHtml("<nav aria-label=\"breadcrumb\">");
+        output.TagName = "nav";
+        output.Attributes.Add("aria-label", "breadcrumb");
         output.Content.AppendHtml($"<ol class=\"{options.OlCssClass}\">");
 
         foreach (var item in _breadcrumbService.Items)
@@ -53,7 +54,6 @@ public class BreadcrumbTagHelper : TagHelper
         }
         
         output.Content.AppendHtml("</ol>");
-        output.Content.AppendHtml("</nav>");
         
         // place the extracted child html below the alert
         output.Content.AppendHtml(child);
