@@ -67,7 +67,7 @@ public class BreadcrumbService : IBreadcrumbService
         foreach (var method in type.GetMethods())
         {
             // check if the type is a MVC action
-            if (typeof(IActionResult).IsAssignableFrom(method.ReturnType)) // todo: add check for Task<> and then if result type is IActionResult
+            if (typeof(IActionResult).IsAssignableFrom(method.ReturnType) || IsGenericActionResult(method.ReturnType))
             {
                 var defaultBreadcrumbAttribute = method.GetCustomAttribute<DefaultBreadcrumbAttribute>();
                 if (defaultBreadcrumbAttribute != null)
@@ -81,6 +81,17 @@ public class BreadcrumbService : IBreadcrumbService
         
         // assign output to default null
         item = null!;
+        return false;
+    }
+
+    private static bool IsGenericActionResult(Type type)
+    {
+        if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Task<>))
+        {
+            Type genericType = type.GetGenericArguments()[0];
+            return typeof(IActionResult).IsAssignableFrom(genericType);
+        }
+
         return false;
     }
 
@@ -114,5 +125,11 @@ public class BreadcrumbService : IBreadcrumbService
         }
         
         _items.Insert(1, item);
+    }
+
+    public void SetItems(List<BreadcrumbItem> items)
+    {
+        _items.Clear();
+        _items.AddRange(items);
     }
 }

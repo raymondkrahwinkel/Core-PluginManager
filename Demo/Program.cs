@@ -1,4 +1,5 @@
 using CorePluginManager;
+using CorePluginManager.Plugins.Alert;
 using CorePluginManager.Plugins.Breadcrumb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder
     .BuildPluginManager(typeof(Program).Assembly)
-    .SetPluginManagerOptions(new BreadcrumbOptions() { ActiveCssClass = "active" });
+    .SetPluginManagerOptions(new BreadcrumbOptions() { ActiveCssClass = "active" })
+    .SetPluginManagerOptions(new AlertOptions()
+    {
+        ErrorMessages = new AlertOptions.MessageOptions()
+        {
+            CssClass = "alert-danger",
+            Dismissible = true
+        }
+    });
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

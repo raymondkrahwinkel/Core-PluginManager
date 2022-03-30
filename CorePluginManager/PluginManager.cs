@@ -4,6 +4,7 @@ using CorePluginManager.Interfaces;
 using CorePluginManager.Utils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace CorePluginManager;
 
@@ -11,7 +12,7 @@ public static class PluginManager
 {
     private static Assembly _parentAssembly = null!;
     public static Assembly Parent => _parentAssembly;
-    private static readonly Dictionary<Type, object> _optionsStack = new();
+    private static readonly Dictionary<Type, object?> _optionsStack = new();
     
     public static WebApplicationBuilder BuildPluginManager(this WebApplicationBuilder builder, Assembly parentAssembly)
     {
@@ -56,7 +57,7 @@ public static class PluginManager
                 }
                 catch (Exception ex)
                 {
-                    // todo: handle exception
+                    Console.Error.WriteLine($"Exception during BuildPluginManager: {ex.Message}{Console.Error.NewLine}{ex.StackTrace}");
                 }
             }
         }
@@ -64,10 +65,12 @@ public static class PluginManager
         return builder;
     }
 
-    public static WebApplicationBuilder SetPluginManagerOptions(this WebApplicationBuilder builder, object option)
+    public static WebApplicationBuilder SetPluginManagerOptions(this WebApplicationBuilder builder, object? option)
     {
+        if (option == null)
+            return builder;
+        
         var optionType = option.GetType();
-
         if (_optionsStack.ContainsKey(optionType))
         {
             _optionsStack[optionType] = option;
@@ -86,9 +89,9 @@ public static class PluginManager
     /// <typeparam name="T"></typeparam>
     /// <param name="defaultValue"></param>
     /// <returns>set defaultValue when not found</returns>
-    public static T GetPluginManagerOptions<T>(T defaultValue = default)
+    public static T GetPluginManagerOptions<T>(T defaultValue = default!)
     {
-        if (_optionsStack.TryGetValue(typeof(T), out object value))
+        if (_optionsStack.TryGetValue(typeof(T), out object? value) && value != null)
         {
             try
             {
@@ -120,7 +123,7 @@ public static class PluginManager
                 }
                 catch (Exception ex)
                 {
-                    // todo: handle exception
+                    Console.Error.WriteLine($"Exception during UsePluginManager: {ex.Message}{Console.Error.NewLine}{ex.StackTrace}");
                 }
             }
         }

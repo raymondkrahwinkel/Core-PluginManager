@@ -19,14 +19,14 @@ public class HomeController : Controller
 
     //[Breadcrumb("Homepage")]
     [DefaultBreadcrumb("Home")]
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         _alertService.Error("Test!");
         return View();
     }
 
     [Breadcrumb("Privacy")]
-    public IActionResult Privacy()
+    public async Task<IActionResult> Privacy()
     {
         var test = _alertService.GetErrorMessages();
         return View();
