@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
-using CorePluginManager.Plugins.Alert;
-using CorePluginManager.Plugins.Breadcrumb.Attributes;
+using CorePluginManager.Alert.Services;
+using CorePluginManager.Breadcrumb.Attributes;
 using Microsoft.AspNetCore.Mvc;
 using Demo.Models;
 

@@ -19,12 +19,24 @@ jobs:
         run: echo "VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV
         #run: echo "VERSION=0.0.1" >> $GITHUB_ENV
       - name: Build
-        run: dotnet build CorePluginManager --configuration Release /p:Version=${VERSION}
+        run: |
+          dotnet build CorePluginManager --configuration Release /p:Version=${VERSION}
+          dotnet build CorePluginManager.Alert --configuration Release /p:Version=${VERSION}
+          dotnet build CorePluginManager.Breadcrumb --configuration Release /p:Version=${VERSION}
       - name: Test
-        run: dotnet test CorePluginManager --configuration Release /p:Version=${VERSION} --no-build
+        run: |
+          dotnet test CorePluginManager --configuration Release /p:Version=${VERSION} --no-build
+          dotnet test CorePluginManager.Alert --configuration Release /p:Version=${VERSION} --no-build
+          dotnet test CorePluginManager.Breadcrumb --configuration Release /p:Version=${VERSION} --no-build
       - name: Pack
-        run: dotnet pack CorePluginManager --configuration Release /p:Version=${VERSION} --no-build --output .
+        run: |
+          dotnet pack CorePluginManager --configuration Release /p:Version=${VERSION} --no-build --output .
+          dotnet pack CorePluginManager.Alert --configuration Release /p:Version=${VERSION} --no-build --output .
+          dotnet pack CorePluginManager.Breadcrumb --configuration Release /p:Version=${VERSION} --no-build --output .
       - name: Push
-        run: dotnet nuget push CorePluginManager.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+        run: |
+          dotnet nuget push CorePluginManager.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+          dotnet nuget push CorePluginManager.Alert.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
+          dotnet nuget push CorePluginManager.Breadcrumb.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${GITHUB_TOKEN}
         env:
           GITHUB_TOKEN: ${{ secrets.PROJECT_GITHUB_TOKEN }}

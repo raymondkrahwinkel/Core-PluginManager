@@ -55,18 +55,15 @@ public class ActiveLinkTagHelper : TagHelper
             activeClass = OverrideActiveCssClass;
         }
         
-        if (!string.IsNullOrEmpty(Controller) && !string.IsNullOrEmpty(Action))
+        if (!string.IsNullOrEmpty(Area) || !string.IsNullOrEmpty(Controller) || !string.IsNullOrEmpty(Action))
         {
             var urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
 
             var parameters = Data;
-            if (!string.IsNullOrEmpty(Area))
-            {
-                parameters.Add("Area", Area);
-            }
+            parameters.Add("Area", Area ?? "");
 
             // when it is an A tag, insert the url
-            if (context.TagName.Equals("a", StringComparison.OrdinalIgnoreCase))
+            if (context.TagName.Equals("a", StringComparison.OrdinalIgnoreCase) && !string.IsNullOrEmpty(Controller) && !string.IsNullOrEmpty(Action))
             {
                 if (!output.Attributes.ContainsName("href") || (output.Attributes["href"].Value.ToString() == string.Empty || output.Attributes["href"].Value.ToString() == "#"))
                 {
@@ -91,9 +88,22 @@ public class ActiveLinkTagHelper : TagHelper
                 }
 
                 if (
-                    ((string.IsNullOrEmpty(currentArea) && string.IsNullOrEmpty(Area)) || currentArea.Equals(Area, StringComparison.OrdinalIgnoreCase))
-                    && currentAction!.Equals(Action, StringComparison.OrdinalIgnoreCase)
-                    && ((controllerValue as string)!).Equals(Controller, StringComparison.OrdinalIgnoreCase)
+                    (
+                     // (string.IsNullOrEmpty(currentArea) && string.IsNullOrEmpty(Area))
+                     // &&
+                     (
+                         currentArea.Equals(Area, StringComparison.OrdinalIgnoreCase)) && 
+                     currentAction!.Equals(Action, StringComparison.OrdinalIgnoreCase) && 
+                     ((controllerValue as string)!).Equals(Controller, StringComparison.OrdinalIgnoreCase)
+                    )
+                    ||
+                    (
+                        !string.IsNullOrEmpty(Area) && string.IsNullOrEmpty(Controller) && string.IsNullOrEmpty(Action) && currentArea.Equals(Area, StringComparison.OrdinalIgnoreCase)
+                    )
+                    ||
+                    (
+                        !string.IsNullOrEmpty(Area) && !string.IsNullOrEmpty(Controller) && string.IsNullOrEmpty(Action) && currentArea.Equals(Area, StringComparison.OrdinalIgnoreCase) && ((controllerValue as string)!).Equals(Controller, StringComparison.OrdinalIgnoreCase)
+                    )
                 )
                 {
                     string cssClassString = "";

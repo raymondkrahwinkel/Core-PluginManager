@@ -1,4 +1,4 @@
-﻿namespace CorePluginManager.Plugins.Alert;
+﻿namespace CorePluginManager.Alert.Models;
 
 public class AlertOptions
 {

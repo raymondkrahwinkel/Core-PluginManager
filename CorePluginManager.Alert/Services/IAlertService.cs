@@ -1,4 +1,4 @@
-﻿namespace CorePluginManager.Plugins.Alert;
+﻿namespace CorePluginManager.Alert.Services;
 
 public interface IAlertService
 {

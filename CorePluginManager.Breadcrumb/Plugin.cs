@@ -1,10 +1,11 @@
-﻿using CorePluginManager.Interfaces;
+﻿using CorePluginManager.Breadcrumb.Services;
+using CorePluginManager.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace CorePluginManager.Plugins.Breadcrumb;
+namespace CorePluginManager.Breadcrumb;
 
 public class Plugin : IPluginServiceCollection, IPluginApplicationBuilder
 {

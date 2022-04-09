@@ -1,4 +1,4 @@
-﻿namespace CorePluginManager.Plugins.Breadcrumb.Models;
+﻿namespace CorePluginManager.Breadcrumb.Models;
 
 public class BreadcrumbItem
 {

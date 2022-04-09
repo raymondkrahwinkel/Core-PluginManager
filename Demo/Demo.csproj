@@ -8,6 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\CorePluginManager.Alert\CorePluginManager.Alert.csproj" />
+      <ProjectReference Include="..\CorePluginManager.Breadcrumb\CorePluginManager.Breadcrumb.csproj" />
       <ProjectReference Include="..\CorePluginManager\CorePluginManager.csproj" />
     </ItemGroup>
 

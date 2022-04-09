@@ -1,7 +1,6 @@
-﻿using System.Reflection;
-using CorePluginManager.Plugins.Breadcrumb.Models;
+﻿using CorePluginManager.Breadcrumb.Models;
 
-namespace CorePluginManager.Plugins.Breadcrumb;
+namespace CorePluginManager.Breadcrumb.Services;
 
 public interface IBreadcrumbService
 {

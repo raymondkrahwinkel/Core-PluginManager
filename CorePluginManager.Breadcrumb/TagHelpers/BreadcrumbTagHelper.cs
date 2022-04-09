@@ -1,11 +1,12 @@
-﻿using CorePluginManager.Plugins.Breadcrumb.Models;
+﻿using CorePluginManager.Breadcrumb.Models;
+using CorePluginManager.Breadcrumb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace CorePluginManager.Plugins.Breadcrumb;
+namespace CorePluginManager.Breadcrumb.TagHelpers;
 
 [HtmlTargetElement("breadcrumb")]
 public class BreadcrumbTagHelper : TagHelper
@@ -30,7 +31,8 @@ public class BreadcrumbTagHelper : TagHelper
         var urlHelper = _urlHelperFactory.GetUrlHelper(ViewContext);
         var child = await output.GetChildContentAsync();
 
-        output.Content.AppendHtml("<nav aria-label=\"breadcrumb\">");
+        output.TagName = "nav";
+        output.Attributes.Add("aria-label", "breadcrumb");
         output.Content.AppendHtml($"<ol class=\"{options.OlCssClass}\">");
 
         foreach (var item in _breadcrumbService.Items)
@@ -53,7 +55,6 @@ public class BreadcrumbTagHelper : TagHelper
         }
         
         output.Content.AppendHtml("</ol>");
-        output.Content.AppendHtml("</nav>");
         
         // place the extracted child html below the alert
         output.Content.AppendHtml(child);

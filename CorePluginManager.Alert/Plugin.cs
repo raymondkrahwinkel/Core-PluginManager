@@ -1,7 +1,8 @@
-﻿using CorePluginManager.Interfaces;
+﻿using CorePluginManager.Alert.Services;
+using CorePluginManager.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CorePluginManager.Plugins.Alert;
+namespace CorePluginManager.Alert;
 
 public class Plugin : IPluginServiceCollection
 {
