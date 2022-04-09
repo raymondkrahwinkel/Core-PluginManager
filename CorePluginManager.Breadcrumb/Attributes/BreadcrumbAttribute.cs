@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CorePluginManager.Breadcrumb.Attributes;
 
-[AttributeUsage(AttributeTargets.Class|AttributeTargets.Method)]
+[AttributeUsage(AttributeTargets.Class|AttributeTargets.Method, AllowMultiple = true)]
 public class BreadcrumbAttribute : ActionFilterAttribute
 {
     /// <summary>
