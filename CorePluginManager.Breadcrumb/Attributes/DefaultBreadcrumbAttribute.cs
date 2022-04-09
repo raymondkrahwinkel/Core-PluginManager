@@ -1,7 +1,7 @@
-﻿using CorePluginManager.Plugins.Breadcrumb.Models;
+﻿using CorePluginManager.Breadcrumb.Models;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace CorePluginManager.Plugins.Breadcrumb.Attributes;
+namespace CorePluginManager.Breadcrumb.Attributes;
 
 [AttributeUsage(AttributeTargets.Class|AttributeTargets.Method)]
 public class DefaultBreadcrumbAttribute : BreadcrumbAttribute

@@ -1,11 +1,12 @@
-﻿using CorePluginManager.Plugins.Breadcrumb.Models;
+﻿using CorePluginManager.Breadcrumb.Models;
+using CorePluginManager.Breadcrumb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace CorePluginManager.Plugins.Breadcrumb;
+namespace CorePluginManager.Breadcrumb.TagHelpers;
 
 [HtmlTargetElement("breadcrumb")]
 public class BreadcrumbTagHelper : TagHelper

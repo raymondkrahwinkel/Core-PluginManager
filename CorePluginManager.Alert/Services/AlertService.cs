@@ -1,7 +1,7 @@
 ﻿using CorePluginManager.Helpers;
 using Microsoft.Extensions.Logging;
 
-namespace CorePluginManager.Plugins.Alert;
+namespace CorePluginManager.Alert.Services;
 
 public class AlertService : IAlertService
 {

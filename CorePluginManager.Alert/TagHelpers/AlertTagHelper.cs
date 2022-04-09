@@ -1,10 +1,10 @@
-﻿using System.Text;
-using Microsoft.AspNetCore.Html;
+﻿using CorePluginManager.Alert.Models;
+using CorePluginManager.Alert.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 
-namespace CorePluginManager.Plugins.Alert;
+namespace CorePluginManager.Alert.TagHelpers;
 
 [HtmlTargetElement("alert")]
 public class AlertTagHelper : TagHelper

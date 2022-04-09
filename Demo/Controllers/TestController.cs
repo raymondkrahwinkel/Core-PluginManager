@@ -1,6 +1,6 @@
-﻿using CorePluginManager.Plugins.Breadcrumb;
-using CorePluginManager.Plugins.Breadcrumb.Attributes;
-using CorePluginManager.Plugins.Breadcrumb.Models;
+﻿using CorePluginManager.Breadcrumb.Attributes;
+using CorePluginManager.Breadcrumb.Models;
+using CorePluginManager.Breadcrumb.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Controllers;

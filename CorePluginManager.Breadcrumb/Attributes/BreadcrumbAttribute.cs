@@ -1,12 +1,12 @@
-﻿using System.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Runtime.CompilerServices;
-using CorePluginManager.Plugins.Breadcrumb.Models;
+using CorePluginManager.Breadcrumb.Models;
+using CorePluginManager.Breadcrumb.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CorePluginManager.Plugins.Breadcrumb.Attributes;
+namespace CorePluginManager.Breadcrumb.Attributes;
 
 [AttributeUsage(AttributeTargets.Class|AttributeTargets.Method)]
 public class BreadcrumbAttribute : ActionFilterAttribute
@@ -43,7 +43,7 @@ public class BreadcrumbAttribute : ActionFilterAttribute
 
     public BreadcrumbAttribute()
     {
-        
+        Title = string.Empty;
     }
     
     public BreadcrumbAttribute(string title, [CallerMemberName] string memberName = "")

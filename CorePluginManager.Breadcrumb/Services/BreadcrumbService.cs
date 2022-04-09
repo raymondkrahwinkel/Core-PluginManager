@@ -1,9 +1,9 @@
 ﻿using System.Reflection;
-using CorePluginManager.Plugins.Breadcrumb.Attributes;
-using CorePluginManager.Plugins.Breadcrumb.Models;
+using CorePluginManager.Breadcrumb.Attributes;
+using CorePluginManager.Breadcrumb.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CorePluginManager.Plugins.Breadcrumb;
+namespace CorePluginManager.Breadcrumb.Services;
 
 public class BreadcrumbService : IBreadcrumbService
 {

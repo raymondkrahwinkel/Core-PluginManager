@@ -1,6 +1,6 @@
 using CorePluginManager;
-using CorePluginManager.Plugins.Alert;
-using CorePluginManager.Plugins.Breadcrumb.Models;
+using CorePluginManager.Alert.Models;
+using CorePluginManager.Breadcrumb.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

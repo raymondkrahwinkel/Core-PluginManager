@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Authors>Raymond Krahwinkel</Authors>
+        <PackageProjectUrl>https://github.com/raymondkrahwinkel/Core-PluginManager</PackageProjectUrl>
+        <PackageId>CorePluginManager.Breadcrumb</PackageId>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/raymondkrahwinkel/Core-PluginManager</RepositoryUrl>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CorePluginManager\CorePluginManager.csproj" />
+    </ItemGroup>
+
+</Project>

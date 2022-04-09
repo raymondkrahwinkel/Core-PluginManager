@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorePluginManager", "CorePluginManager\CorePluginManager.csproj", "{6FF74998-0741-4D21-A990-23032FF9CFF7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorePluginManager.Breadcrumb", "CorePluginManager.Breadcrumb\CorePluginManager.Breadcrumb.csproj", "{74111C54-0F4B-45F9-A7C0-DA1B411D6416}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorePluginManager.Alert", "CorePluginManager.Alert\CorePluginManager.Alert.csproj", "{37F668CA-BE56-4B8E-805B-762C4E47BB4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{6FF74998-0741-4D21-A990-23032FF9CFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6FF74998-0741-4D21-A990-23032FF9CFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6FF74998-0741-4D21-A990-23032FF9CFF7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74111C54-0F4B-45F9-A7C0-DA1B411D6416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74111C54-0F4B-45F9-A7C0-DA1B411D6416}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74111C54-0F4B-45F9-A7C0-DA1B411D6416}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74111C54-0F4B-45F9-A7C0-DA1B411D6416}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37F668CA-BE56-4B8E-805B-762C4E47BB4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37F668CA-BE56-4B8E-805B-762C4E47BB4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37F668CA-BE56-4B8E-805B-762C4E47BB4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37F668CA-BE56-4B8E-805B-762C4E47BB4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
